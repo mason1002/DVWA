@@ -1,0 +1,17 @@
+name: FortiDAST Proxy Server
+on:
+  push:
+   branches: [ main ]
+  pull_request:
+   branches: [ main ]
+jobs:
+  build:
+   runs-on: self-hosted
+   steps:
+   - uses: actions/checkout@v3
+   - name: DAST_PROXY_SERVER
+     run: |
+        export EMAIL=wminsheng@fortinet.com LICENSE_SERIAL=FDEVSC0000000730_7174TE798327 ASSET_TOKEN=nbelw62ilThbJyv8Ir8jrLb86kzEJN4+UVCAGcySEN3J9ZbVNq9MGodzgbgPlhmHM33CaTdE3NAFbUrG2EUfwrk4/yYGU9VPN0dwQg== SCANURL=http://192.168.139.140:80/DVWA SCANTYPE=1 ASSET=62a5a8b8-753b-4e42-aba4-9252190b849b
+        env | grep -E "EMAIL|LICENSE_SERIAL|ASSET_TOKEN|SCANURL|SCANTYPE|ASSET" > /tmp/env
+        docker pull registry.fortidast.forticloud.com/dastdevopsproxy:latest
+        docker run --rm --env-file /tmp/env --network=host registry.fortidast.forticloud.com/dastdevopsproxy:latest
