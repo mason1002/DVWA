@@ -3,6 +3,8 @@
 config/config.inc.php.bak
 config/config.inc.php
 
+fdevsec.yaml
+
 Dockerfile
 
 # Vim swap files
