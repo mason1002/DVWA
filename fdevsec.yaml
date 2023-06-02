@@ -14,5 +14,5 @@ scanners:
 
 
 dast:
-  url: http://192.168.139.140/DVWA:80
+  url: http://192.168.139.140:80/DVWA
   full_scan: true #true|false

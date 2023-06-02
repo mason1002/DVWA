@@ -1,4 +1,4 @@
-name: FortiDevSec DAST Scanner CI
+name: FortiDAST Scanner CI
 on:
   push:
    branches: [ master ]
