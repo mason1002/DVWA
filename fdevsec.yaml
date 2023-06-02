@@ -1,0 +1,18 @@
+version: v1
+
+id:
+  org: cbc2fd1e-518e-46a2-8bc2-6d27062ed183
+  app: 0b4aee72-2d04-4023-898c-4b07102ac736
+
+scanners:
+  - sast
+  - secret
+  - sca
+  - iac
+  - container  
+  - dast
+
+
+dast:
+  url: http://192.168.139.140/DVWA:80
+  full_scan: true #true|false
