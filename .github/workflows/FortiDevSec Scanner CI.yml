@@ -1,4 +1,5 @@
 name: FortiDevSec Scanner CI
+run-name: ${{ github.actor }} is doing SAST & DAST scan 🚀
 on:
   push:
    branches: [ master ]
@@ -14,6 +15,14 @@ jobs:
           env | grep -E "GITHUB_ACTIONS|GITHUB_RUN_NUMBER|GITHUB_REF_NAME|GITHUB_SHA" > /tmp/env
           docker pull registry.fortidevsec.forticloud.com/fdevsec_sast:latest
           docker run --rm --env-file /tmp/env --mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
+     
+      - name: DAST_PROXY_SERVER
+        run: |
+          export EMAIL=wminsheng@fortinet.com LICENSE_SERIAL=FDEVSC0000000730_7174TE798327 ASSET_TOKEN=K3mPnQo718fcvH2AkDX+kGF2mhqVlFE1KNRqEAViVwIsIvx/hW6BSAvAh1A3aVsjeyiHgloKzP1FsSKl3B4SU5+DZ4+/DegY6aVnsw== SCANURL=http://192.168.139.140:80/DVWA SCANTYPE=1 ASSET=62a5a8b8-753b-4e42-aba4-9252190b849b
+          env | grep -E "EMAIL|LICENSE_SERIAL|ASSET_TOKEN|SCANURL|SCANTYPE|ASSET" > /tmp/env
+          docker pull registry.fortidast.forticloud.com/dastdevopsproxy:latest
+          docker run --env-file /tmp/env --network=host registry.fortidast.forticloud.com/dastdevopsproxy:latest      
+      
       - name: DAST
         run: |
           env | grep -E "GITHUB_ACTIONS|GITHUB_RUN_NUMBER|GITHUB_REF_NAME|GITHUB_SHA" > /tmp/env
