@@ -3,7 +3,7 @@
 config/config.inc.php.bak
 config/config.inc.php
 
-fdevsec.yaml
+
 
 Dockerfile
 
@@ -18,3 +18,6 @@ tests/__pycache__/
 
 # Don't include any uploaded images
 hackable/uploads/*
+
+
+fdevsec.yaml
