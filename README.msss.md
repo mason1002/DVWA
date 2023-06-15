@@ -1,3 +1,1 @@
-hello mason
-
-test from github portal
+test SAST in github action
