@@ -1,1 +1,1 @@
-test SAST in github action
+test FortiDevSec SAST via GitHub Actions
